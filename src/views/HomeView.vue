@@ -8,9 +8,9 @@ export default {
       products: "products",
     };
   },
-  components: {
-    ItemDetailView,
-  },
+  // components: {
+  //   ItemDetailView,
+  // },
   // computed: {
   //   articles() {
   //     return this.$store.state.products; // storeから記事データを取得
@@ -51,8 +51,8 @@ export default {
               name: 'detail',
               params: { id: product.id },
             }"
-          >
-          </ItemDetailView>
+          />
+
 
           <div
             class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8"
