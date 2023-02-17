@@ -10,6 +10,17 @@
       "city": "新宿区",
       "streetAddress": "新宿三丁目３−５　新宿ビル３０４",
       "id": 1
+    },
+    {
+      "firstName": "佐藤",
+      "lastName": "健",
+      "email": "no@gmail.com",
+      "password": "zzaassxx",
+      "postCode": 2235566,
+      "region": "東京都",
+      "city": "板橋区",
+      "streetAddress": "板橋三丁目3-5 板橋ビル302",
+      "id": 2
     }
   ],
   "items": [
@@ -18,16 +29,16 @@
       "name": "Earthen Bottle",
       "href": "#",
       "price": "$48",
-      "imageSrc":" https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
       "imageAlt": "Tall slender porcelain bottle with natural clay textured body and cork stopper."
     },
     {
       "id": 2,
       "name": "Nomad Tumbler",
-      "href":"#",
-      "price":" $35",
+      "href": "#",
+      "price": " $35",
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-      "imageAlt":" Olive drab green insulated bottle with flared screw lid and flat top."
+      "imageAlt": " Olive drab green insulated bottle with flared screw lid and flat top."
     },
     {
       "id": 3,
@@ -40,10 +51,10 @@
     {
       "id": 4,
       "name": "Machined Mechanical Pencil",
-      "href":"#",
+      "href": "#",
       "price": "$35",
-      "imageSrc":"https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-      "imageAlt":"Hand holding black machined steel mechanical pencil with brass tip and top."
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+      "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top."
     }
   ]
 }
