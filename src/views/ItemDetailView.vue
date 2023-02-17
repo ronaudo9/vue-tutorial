@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 import axios from "axios";
-import ItemDetail from "../components/ItemDetail.vue";
+import type { products } from "../types/type";
+
 
 export default {
   props: {
@@ -8,7 +9,7 @@ export default {
   },
   data() {
     return {
-      products: "products",
+      products: "products" as unknown as products,
     };
   },
   // computed: {
@@ -44,8 +45,6 @@ export default {
   // },
 };
 </script>
-
-
 
 <template>
   <section class="text-gray-600 body-font overflow-hidden">
@@ -226,9 +225,9 @@ export default {
             </div> -->
           </div>
           <div class="flex">
-            <span class="title-font font-medium text-2xl text-gray-900"
-              >{{ products.price }}</span
-            >
+            <span class="title-font font-medium text-2xl text-gray-900">{{
+              products.price
+            }}</span>
             <button
               class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
             >

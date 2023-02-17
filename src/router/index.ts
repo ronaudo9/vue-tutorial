@@ -4,6 +4,7 @@ import IndexView from "../views/IndexView.vue";
 import GlobalHeader from "../components/GlobalHeader.vue";
 import ItemDetail from "../views/ItemDetailView.vue";
 import HelloWorld from "../components/HelloWorld.vue";
+import signView from "../views/signView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,7 +17,7 @@ const router = createRouter({
     {
       path: "/:id",
       name: "detail",
-      props: true ,
+      props: true,
       component: ItemDetail,
     },
     {
@@ -25,7 +26,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/SigninView.vue"),
+      component: () => import("../views/AboutView.vue"),
     },
     {
       path: "/index",
@@ -36,6 +37,11 @@ const router = createRouter({
       path: "/header",
       name: "header",
       component: GlobalHeader,
+    },
+    {
+      path: "/signin",
+      name: "sign",
+      component: signView,
     },
   ],
 });

@@ -7,6 +7,9 @@ module.exports = {
     "./src/components/GlobalHeader.vue",
     "./src/views/HomeView.vue",
     "./src/components/ItemDetail.vue",
+    "./src/views/signView.vue",
+    "./src/components/GlobalFooter.vue",
+    "./src/components/GlobalHeader2.vue"
   ],
   theme: {
     extend: {},
