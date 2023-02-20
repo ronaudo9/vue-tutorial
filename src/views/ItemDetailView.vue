@@ -1,7 +1,8 @@
-<script lang="ts">
+<script>
 import axios from "axios";
-import type { products } from "../types/type";
-
+// import type { products } from "../types/type";
+import { useCookies } from "vue3-cookies";
+// import type {carts} from "../types/type"
 
 export default {
   props: {
@@ -9,7 +10,9 @@ export default {
   },
   data() {
     return {
-      products: "products" as unknown as products,
+      products: "products",
+      //  as unknown as products,
+      carts: "carts",
     };
   },
   // computed: {
@@ -26,10 +29,30 @@ export default {
       if (vm.id) {
         axios.get("http://localhost:8001/items/" + vm.id).then((response) => {
           vm.products = response.data;
+          const { cookies } = useCookies();
+          let cookie = cookies.get("id");
+          vm.userId = Number(cookie);
           console.log(vm.id);
           console.log(vm.products);
         });
       }
+    },
+    cart: function () {
+      const vm = this;
+      vm.carts = {
+        userId: this.userId,
+        itemId: this.products.id,
+        name: this.products.name,
+        href: this.products.href,
+        price: this.products.price,
+        imageSrc: this.products.imageSrc,
+        imageAlt: this.products.Alt,
+      }
+      axios.post("http://localhost:8001/carts", vm.carts).then((response) => {
+        vm.carts = response.data;
+        console.log(vm.carts);
+        this.$router.push({ path: "/cart" });
+      });
     },
   },
 
@@ -229,9 +252,10 @@ export default {
               products.price
             }}</span>
             <button
+              @click.prevent="cart"
               class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
             >
-              Button
+            to cart
             </button>
             <button
               class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"

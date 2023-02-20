@@ -9,7 +9,8 @@ module.exports = {
     "./src/components/ItemDetail.vue",
     "./src/views/signView.vue",
     "./src/components/GlobalFooter.vue",
-    "./src/components/GlobalHeader2.vue"
+    "./src/components/GlobalHeader2.vue",
+    "./src/views/shoppingCart.vue",
   ],
   theme: {
     extend: {},

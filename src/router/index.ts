@@ -5,6 +5,7 @@ import GlobalHeader from "../components/GlobalHeader.vue";
 import ItemDetail from "../views/ItemDetailView.vue";
 import HelloWorld from "../components/HelloWorld.vue";
 import signView from "../views/signView.vue";
+import shoppingCart from "../views/shoppingCart.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,11 @@ const router = createRouter({
       path: "/signin",
       name: "sign",
       component: signView,
+    },
+    {
+     path:"/cart",
+     name:"cart",
+     component:shoppingCart,
     },
   ],
 });
