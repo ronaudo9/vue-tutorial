@@ -29,21 +29,65 @@ export default {
         )
         .then((response) => {
           let u = response.data;
-
           console.log(u);
+          if (u.length==0) {
+            location.reload();
+            alert("Incorrect email address or password");
+            // return false;
+          }
+
+          // console.log(u);
           let id = u[0].id;
-          console.log(vm.user.email);
-          console.log(vm.user.password);
+
           const { cookies } = useCookies();
           cookies.set("id", id);
           // this.$emit("isLoggedIn");
-          location.reload();
+          try {
+            if (id > 0) {
+              this.$router.push({ path: "/" });
+            }
+          } catch (error) {
+            console.log(error.message);
+          }
 
           // this.$router.go({ path: "/", force: true });
           // this.$router.push({ path: "/" });
           // this.$router.push({ name: 'UserDetailPage', params: { id: u.id } });
-        })
-        .then(this.$router.push({ path: "/" }));
+        });
+      axios
+        .get(
+          "http://localhost:8001/users" +
+            "?" +
+            "email" +
+            "=" +
+            vm.user.email +
+            "&" +
+            "password" +
+            "=" +
+            vm.user.password
+        )
+        .then((response) => {
+          let v = response.data;
+          if (v.length==0) {
+            return false;
+          }
+          console.log(v);
+          let id = v[0].id;
+
+          const { cookies } = useCookies();
+          let cookie = cookies.get("id");
+          try {
+            if (id > 0) {
+              location.reload();
+            }
+          } catch (error) {
+            console.log(error.message);
+          }
+
+          // else{
+          //   alert("Incorrect email address or password")
+          // }
+        });
     },
   },
 };
@@ -97,7 +141,7 @@ export default {
               type="email"
               autocomplete="email"
               v-model="user.email"
-              required=""
+              required
               class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Email address"
             />
@@ -110,7 +154,7 @@ export default {
               type="password"
               autocomplete="current-password"
               v-model="user.password"
-              required=""
+              required
               class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Password"
             />

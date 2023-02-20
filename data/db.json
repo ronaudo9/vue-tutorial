@@ -56,5 +56,92 @@
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
       "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top."
     }
+  ],
+  "carts": [
+    {
+      "userId": 1,
+      "itemId": 2,
+      "name": "Nomad Tumbler",
+      "href": "#",
+      "price": " $35",
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "itemId": 3,
+      "name": "Focus Paper Refill",
+      "href": "#",
+      "price": "$89",
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "itemId": 1,
+      "name": "Earthen Bottle",
+      "href": "#",
+      "price": "$48",
+      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "itemId": 1,
+      "name": "Earthen Bottle",
+      "href": "#",
+      "price": "$48",
+      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "itemId": 1,
+      "name": "Earthen Bottle",
+      "href": "#",
+      "price": "$48",
+      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "itemId": 2,
+      "name": "Nomad Tumbler",
+      "href": "#",
+      "price": " $35",
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+      "count":1,
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "itemId": 1,
+      "name": "Earthen Bottle",
+      "href": "#",
+      "price": "$48",
+      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "count":1,
+      "id": 7
+    },
+    {
+      "userId": 2,
+      "itemId": 1,
+      "name": "Earthen Bottle",
+      "href": "#",
+      "price": "$48",
+      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "count":1,
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "itemId": 2,
+      "name": "Nomad Tumbler",
+      "href": "#",
+      "price": " $35",
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+      "count":1,
+      "id": 9
+    }
   ]
 }
