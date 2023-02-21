@@ -5,7 +5,9 @@ export default {
   data() {
     return {
       products: "products",
-      count: 1,
+      count: "1",
+      purchase: "purchase",
+      Alltotal: "Alltotal",
       // userId: "userId",
       // itemId: "itemId",
       // id: "id",
@@ -28,7 +30,16 @@ export default {
         .get("http://localhost:8001/carts" + "?" + "userId" + "=" + id)
         .then((response) => {
           vm.products = response.data;
-          console.log(vm.products);
+
+          const priceArray = [];
+          vm.products.forEach((element) => {
+            priceArray.push(element.prices);
+          });
+          // const initialValue = 0;
+          const sumPrice = priceArray.reduce(
+            (accumulator, currentPrice) => accumulator + currentPrice,0
+          );
+          vm.Alltotal = sumPrice;
           // return vm.products.map((product) => (
           //   <Origin
           //     userId={product.userid}
@@ -51,11 +62,45 @@ export default {
     //   this.imageSrc = imageSrc;
     //   console.log(userId);
     // },
-    increment() {
-      this.count++;
+    increment(product) {
+      // this.count = Number(this.count)+Number(product.count);
+      product.count++;
+      let prices = product.price.slice(1);
+      let price = Number(prices);
+      product.prices = product.count * price;
+      this.Alltotal = this.Alltotal + price;
     },
-    decrement() {
-      this.count--;
+    decrement(product) {
+      if (product.count > 1) {
+        product.count--;
+        let prices = product.price.slice(1);
+        let price = Number(prices);
+        product.prices = product.count * price;
+        this.Alltotal = this.Alltotal - price;
+      }
+    },
+    purchases(product) {
+      const vm = this;
+      let pro = this.products;
+      this.purchase = this.products;
+      //  = {
+      // products:this.products
+      //  userId: this.userId,
+      //  itemId: this.itemId,
+      //  count:this.count,
+      //  name: this.name,
+      //  href: this.href,
+      //  price: this.price,
+      //  prices: this.prices,
+      //  imageSrc: this.imageSrc,
+      // }
+      axios
+        .post("http://localhost:8001/purchase", vm.purchase)
+        .then((response) => {
+          vm.purchase = response.data;
+          console.log(vm.purchase);
+          // this.$router.push({ path: "/cart" });
+        });
     },
   },
 };
@@ -142,18 +187,18 @@ export default {
                     value="product.id"
                     class="w-full focus:ring ring-inset ring-indigo-300 outline-none transition duration-100 px-4 py-2"
                   >
-                    {{ count }}
+                    {{ product.count }}
                   </div>
 
                   <div class="flex flex-col border-l divide-y">
                     <button
-                      @click.prevent="increment"
+                      @click.prevent="increment(product)"
                       class="w-6 flex justify-center items-center flex-1 bg-white hover:bg-gray-100 active:bg-gray-200 leading-none select-none transition duration-100"
                     >
                       +
                     </button>
                     <button
-                      @click.prevent="decrement"
+                      @click.prevent="decrement(product)"
                       class="w-6 flex justify-center items-center flex-1 bg-white hover:bg-gray-100 active:bg-gray-200 leading-none select-none transition duration-100"
                     >
                       -
@@ -169,9 +214,9 @@ export default {
               </div>
 
               <div class="pt-3 sm:pt-2 ml-4 md:ml-8 lg:ml-16">
-                <span class="block text-gray-800 md:text-lg font-bold">{{
-                  product.price
-                }}</span>
+                <span class="block text-gray-800 md:text-lg font-bold"
+                  >${{ product.prices }}</span
+                >
               </div>
             </div>
           </div>
@@ -377,7 +422,7 @@ export default {
       <div class="flex flex-col items-end gap-4">
         <div class="w-full sm:max-w-xs bg-gray-100 rounded-lg p-4">
           <div class="space-y-1">
-            <div class="flex justify-between text-gray-500 gap-4">
+            <!-- <div class="flex justify-between text-gray-500 gap-4">
               <span>Subtotal</span>
               <span>$129.99</span>
             </div>
@@ -385,7 +430,7 @@ export default {
             <div class="flex justify-between text-gray-500 gap-4">
               <span>Shipping</span>
               <span>$4.99</span>
-            </div>
+            </div> -->
           </div>
 
           <div class="border-t pt-4 mt-4">
@@ -393,7 +438,7 @@ export default {
               <span class="text-lg font-bold">Total</span>
 
               <span class="flex flex-col items-end">
-                <span class="text-lg font-bold">$134.98 USD</span>
+                <span class="text-lg font-bold">${{ Alltotal }}</span>
                 <span class="text-gray-500 text-sm">including VAT</span>
               </span>
             </div>
@@ -401,6 +446,7 @@ export default {
         </div>
 
         <button
+          @click.prevent="purchases(product)"
           class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
         >
           Check out
