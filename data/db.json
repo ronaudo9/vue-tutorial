@@ -108,40 +108,92 @@
       "itemId": 2,
       "name": "Nomad Tumbler",
       "href": "#",
-      "price": " $35",
+      "price": "$35",
+      "prices": 35,
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-      "count":1,
+      "count": 1,
       "id": 6
     },
     {
+      "count": 1,
       "userId": 2,
       "itemId": 1,
       "name": "Earthen Bottle",
       "href": "#",
       "price": "$48",
+      "prices": 48,
       "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-      "count":1,
       "id": 7
     },
     {
+      "count": 1,
       "userId": 2,
       "itemId": 1,
       "name": "Earthen Bottle",
       "href": "#",
       "price": "$48",
+      "prices": 48,
       "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-      "count":1,
       "id": 8
     },
     {
+      "count": 1,
       "userId": 2,
       "itemId": 2,
       "name": "Nomad Tumbler",
       "href": "#",
-      "price": " $35",
+      "price": "$35",
+      "prices": 35,
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-      "count":1,
       "id": 9
     }
+  ],
+  "purchase": [
+    [
+      {
+        "userId": 2,
+        "itemId": 2,
+        "name": "Nomad Tumbler",
+        "href": "#",
+        "price": "$35",
+        "prices": 140,
+        "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+        "count": 4,
+        "id": 6
+      },
+      {
+        "count": 3,
+        "userId": 2,
+        "itemId": 1,
+        "name": "Earthen Bottle",
+        "href": "#",
+        "price": "$48",
+        "prices": 144,
+        "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+        "id": 7
+      },
+      {
+        "count": 2,
+        "userId": 2,
+        "itemId": 1,
+        "name": "Earthen Bottle",
+        "href": "#",
+        "price": "$48",
+        "prices": 96,
+        "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+        "id": 8
+      },
+      {
+        "count": 3,
+        "userId": 2,
+        "itemId": 2,
+        "name": "Nomad Tumbler",
+        "href": "#",
+        "price": "$35",
+        "prices": 105,
+        "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+        "id": 9
+      }
+    ]
   ]
 }
