@@ -6,11 +6,11 @@ module.exports = {
     "./src/About.vue",
     "./src/components/GlobalHeader.vue",
     "./src/views/HomeView.vue",
-    "./src/components/ItemDetail.vue",
     "./src/views/signView.vue",
     "./src/components/GlobalFooter.vue",
     "./src/components/GlobalHeader2.vue",
     "./src/views/shoppingCart.vue",
+    "./src/views/ItemDetail.vue",
   ],
   theme: {
     extend: {},

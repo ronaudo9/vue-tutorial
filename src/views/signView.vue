@@ -30,7 +30,7 @@ export default {
         .then((response) => {
           let u = response.data;
           console.log(u);
-          if (u.length==0) {
+          if (u.length == 0) {
             location.reload();
             alert("Incorrect email address or password");
             // return false;
@@ -68,7 +68,7 @@ export default {
         )
         .then((response) => {
           let v = response.data;
-          if (v.length==0) {
+          if (v.length == 0) {
             return false;
           }
           console.log(v);

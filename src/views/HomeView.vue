@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
 import { RouterLink } from "vue-router";
-import ItemDetailView from "../views/ItemDetailView.vue";
+import ItemDetail from "../views/ItemDetail.vue";
 export default {
   data() {
     return {
