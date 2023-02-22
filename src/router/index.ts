@@ -2,10 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import IndexView from "../views/IndexView.vue";
 import GlobalHeader from "../components/GlobalHeader.vue";
-import ItemDetail from "../views/ItemDetailView.vue";
-import HelloWorld from "../components/HelloWorld.vue";
-import signView from "../views/signView.vue";
-import shoppingCart from "../views/shoppingCart.vue"
+import ItemDetail from "../views/ItemDetail.vue";
+import signView from "../views/SignView.vue";
+import shoppingCart from "../views/shoppingCart.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,9 +44,9 @@ const router = createRouter({
       component: signView,
     },
     {
-     path:"/cart",
-     name:"cart",
-     component:shoppingCart,
+      path: "/cart",
+      name: "cart",
+      component: shoppingCart,
     },
   ],
 });

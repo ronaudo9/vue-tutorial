@@ -27,7 +27,7 @@ export default {
       let cookie = cookies.get("id");
       let id = Number(cookie);
       axios
-        .get("http://localhost:8001/carts" + "?" + "userId" + "=" + id)
+        .get("http://localhost:8001/carts" + "?" + "userId" + "=" + id + "&" + "deleted" + "=" + "false")
         .then((response) => {
           vm.products = response.data;
 
@@ -79,10 +79,20 @@ export default {
         this.Alltotal = this.Alltotal - price;
       }
     },
-    purchases(product) {
+    purchases() {
       const vm = this;
-      let pro = this.products;
+
       this.purchase = this.products;
+      this.purchase.forEach((value)=> {
+        let values = value
+        axios
+        .post("http://localhost:8001/purchase",values )
+        .then((response) => {
+          vm.purchase = response.data;
+          console.log(vm.purchase);
+          // this.$router.push({ path: "/cart" });
+        });
+      })
       //  = {
       // products:this.products
       //  userId: this.userId,
@@ -94,12 +104,19 @@ export default {
       //  prices: this.prices,
       //  imageSrc: this.imageSrc,
       // }
-      axios
-        .post("http://localhost:8001/purchase", vm.purchase)
-        .then((response) => {
-          vm.purchase = response.data;
-          console.log(vm.purchase);
-          // this.$router.push({ path: "/cart" });
+
+    },
+    Delete(product){
+      const vm = this;
+      const id = product.id;
+      console.log(product)
+
+      axios.patch("http://localhost:8001/carts/" + id,{
+          deleted: true,
+  }).then((response) => {
+          let data = response.data;
+           console.log(data)
+           location.reload();
         });
     },
   },
@@ -207,6 +224,7 @@ export default {
                 </div>
 
                 <button
+                @click.prevent="Delete(product)"
                   class="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 text-sm font-semibold select-none transition duration-100"
                 >
                   Delete
@@ -446,7 +464,7 @@ export default {
         </div>
 
         <button
-          @click.prevent="purchases(product)"
+          @click.prevent="purchases"
           class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
         >
           Check out
