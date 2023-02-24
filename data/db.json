@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "firstName": "松本",
-      "lastName": "潤",
+      "firstName": "潤",
+      "lastName": "松本",
       "email": "nao@gmail.com",
       "password": "aaqqwwss",
       "postCode": 1237788,
@@ -12,8 +12,8 @@
       "id": 1
     },
     {
-      "firstName": "佐藤",
-      "lastName": "健",
+      "firstName": "健",
+      "lastName": "佐藤",
       "email": "no@gmail.com",
       "password": "zzaassxx",
       "postCode": 2235566,
@@ -30,7 +30,8 @@
       "href": "#",
       "price": "$48",
       "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-      "imageAlt": "Tall slender porcelain bottle with natural clay textured body and cork stopper."
+      "imageAlt": "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
+      "subtotal": 48
     },
     {
       "id": 2,
@@ -38,7 +39,8 @@
       "href": "#",
       "price": " $35",
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-      "imageAlt": " Olive drab green insulated bottle with flared screw lid and flat top."
+      "imageAlt": " Olive drab green insulated bottle with flared screw lid and flat top.",
+      "subtotal": 35
     },
     {
       "id": 3,
@@ -46,7 +48,8 @@
       "href": "#",
       "price": "$89",
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
-      "imageAlt": "Person using a pen to cross a task off a productivity paper card."
+      "imageAlt": "Person using a pen to cross a task off a productivity paper card.",
+      "subtotal": 89
     },
     {
       "id": 4,
@@ -54,65 +57,21 @@
       "href": "#",
       "price": "$35",
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-      "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top."
+      "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top.",
+      "subtotal": 35
     }
   ],
   "carts": [
-    {
-      "userId": 1,
-      "itemId": 2,
-      "name": "Nomad Tumbler",
-      "href": "#",
-      "price": " $35",
-      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "itemId": 3,
-      "name": "Focus Paper Refill",
-      "href": "#",
-      "price": "$89",
-      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "itemId": 1,
-      "name": "Earthen Bottle",
-      "href": "#",
-      "price": "$48",
-      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "itemId": 1,
-      "name": "Earthen Bottle",
-      "href": "#",
-      "price": "$48",
-      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "itemId": 1,
-      "name": "Earthen Bottle",
-      "href": "#",
-      "price": "$48",
-      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-      "id": 5
-    },
     {
       "userId": 2,
       "itemId": 2,
       "name": "Nomad Tumbler",
       "href": "#",
       "price": "$35",
-      "prices": 35,
+      "subtotal": 35,
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
       "count": 1,
-      "deleted": false,
+      "deleted": true,
       "id": 6
     },
     {
@@ -122,9 +81,9 @@
       "name": "Earthen Bottle",
       "href": "#",
       "price": "$48",
-      "prices": 48,
+      "subtotal": 48,
       "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-      "deleted": false,
+      "deleted": true,
       "id": 7
     },
     {
@@ -134,7 +93,7 @@
       "name": "Earthen Bottle",
       "href": "#",
       "price": "$48",
-      "prices": 48,
+      "subtotal": 48,
       "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
       "deleted": true,
       "id": 8
@@ -146,19 +105,36 @@
       "name": "Nomad Tumbler",
       "href": "#",
       "price": "$35",
-      "prices": 35,
+      "subtotal": 35,
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
       "deleted": true,
       "id": 9
     },
     {
-      "userId": 0,
-      "itemId": 1,
-      "name": "Earthen Bottle",
+      "userId": 2,
+      "itemId": 4,
+      "name": "Machined Mechanical Pencil",
       "href": "#",
-      "price": "$48",
-      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "price": "$35",
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+      "imageAlt": "Hand holding black machined steel mechanical pencil with brass tip and top.",
+      "deleted": true,
+      "count": 1,
+      "subtotal": 35,
       "id": 10
+    },
+    {
+      "userId": 2,
+      "itemId": 3,
+      "name": "Focus Paper Refill",
+      "href": "#",
+      "price": "$89",
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
+      "imageAlt": "Person using a pen to cross a task off a productivity paper card.",
+      "deleted": true,
+      "count": 1,
+      "subtotal": 89,
+      "id": 11
     }
   ],
   "purchase": [
@@ -168,23 +144,51 @@
       "name": "Nomad Tumbler",
       "href": "#",
       "price": "$35",
-      "prices": 175,
+      "subtotal": 35,
       "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-      "count": 5,
-      "deleted": false,
+      "count": 1,
+      "deleted": true,
       "id": 6
     },
     {
-      "count": 4,
+      "count": 1,
       "userId": 2,
       "itemId": 1,
       "name": "Earthen Bottle",
       "href": "#",
       "price": "$48",
-      "prices": 192,
+      "subtotal": 48,
+      "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+      "deleted": true,
+      "id": 7
+    }
+  ],
+  "purchasesHistory": [
+    {
+      "userId": 2,
+      "itemId": 2,
+      "name": "Nomad Tumbler",
+      "href": "#",
+      "price": "$35",
+      "subtotal": 35,
+      "imageSrc": "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+      "count": 1,
+      "deleted": false,
+      "id": 6,
+      "date": "2023/2/24 16:07:25"
+    },
+    {
+      "count": 1,
+      "userId": 2,
+      "itemId": 1,
+      "name": "Earthen Bottle",
+      "href": "#",
+      "price": "$48",
+      "subtotal": 48,
       "imageSrc": " https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
       "deleted": false,
-      "id": 7
+      "id": 7,
+      "date": "2023/2/24 16:07:25"
     }
   ]
 }

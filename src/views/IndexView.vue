@@ -54,10 +54,10 @@ export default {
                   >
                   <input
                     type="text"
-                    name="firstName"
-                    id="firstName"
+                    name="lastName"
+                    id="lastName"
                     autocomplete="given-name"
-                    v-model="user.firstName"
+                    v-model="user.lastName"
                     required
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
@@ -71,10 +71,10 @@ export default {
                   >
                   <input
                     type="text"
-                    name="lastName"
-                    id="lastName"
+                    name="firstName"
+                    id="firstName"
                     autocomplete="family-name"
-                    v-model="user.lastName"
+                    v-model="user.firstName"
                     required
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />

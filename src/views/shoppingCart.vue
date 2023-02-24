@@ -8,17 +8,10 @@ export default {
       count: "1",
       purchase: "purchase",
       Alltotal: "Alltotal",
-      // userId: "userId",
-      // itemId: "itemId",
-      // id: "id",
-      // name: "name",
-      // price: "price",
-      // imageSrc: "imageSrc",
     };
   },
   mounted() {
     this.product();
-    // this.origin();
   },
   methods: {
     product: function () {
@@ -33,41 +26,23 @@ export default {
 
           const priceArray = [];
           vm.products.forEach((element) => {
-            priceArray.push(element.prices);
+            priceArray.push(element.subtotal);
           });
-          // const initialValue = 0;
+
           const sumPrice = priceArray.reduce(
             (accumulator, currentPrice) => accumulator + currentPrice,0
           );
           vm.Alltotal = sumPrice;
-          // return vm.products.map((product) => (
-          //   <Origin
-          //     userId={product.userid}
-          //     itemId={product.itemId}
-          //     id={product.id}
-          //     name={product.name}
-          //     price={product.price}
-          //     imageSrc={product.imageSrc}
-          //   />
-          // ));
         });
     },
 
-    // origin: function ({ userId, itemId, id, name, price, imageSrc }) {
-    //   this.userId = userId;
-    //   this.itemId = itemId;
-    //   this.id = id;
-    //   this.name = name;
-    //   this.price = price;
-    //   this.imageSrc = imageSrc;
-    //   console.log(userId);
-    // },
+
     increment(product) {
       // this.count = Number(this.count)+Number(product.count);
       product.count++;
       let prices = product.price.slice(1);
       let price = Number(prices);
-      product.prices = product.count * price;
+      product.subtotal = product.count * price;
       this.Alltotal = this.Alltotal + price;
     },
     decrement(product) {
@@ -75,7 +50,7 @@ export default {
         product.count--;
         let prices = product.price.slice(1);
         let price = Number(prices);
-        product.prices = product.count * price;
+        product.subtotal = product.count * price;
         this.Alltotal = this.Alltotal - price;
       }
     },
@@ -90,21 +65,9 @@ export default {
         .then((response) => {
           vm.purchase = response.data;
           console.log(vm.purchase);
-          // this.$router.push({ path: "/cart" });
+          this.$router.push({ path: "/order" });
         });
       })
-      //  = {
-      // products:this.products
-      //  userId: this.userId,
-      //  itemId: this.itemId,
-      //  count:this.count,
-      //  name: this.name,
-      //  href: this.href,
-      //  price: this.price,
-      //  prices: this.prices,
-      //  imageSrc: this.imageSrc,
-      // }
-
     },
     Delete(product){
       const vm = this;
@@ -115,7 +78,6 @@ export default {
           deleted: true,
   }).then((response) => {
           let data = response.data;
-           console.log(data)
            location.reload();
         });
     },
@@ -233,7 +195,7 @@ export default {
 
               <div class="pt-3 sm:pt-2 ml-4 md:ml-8 lg:ml-16">
                 <span class="block text-gray-800 md:text-lg font-bold"
-                  >${{ product.prices }}</span
+                  >${{ product.subtotal }}</span
                 >
               </div>
             </div>

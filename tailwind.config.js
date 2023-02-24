@@ -11,6 +11,7 @@ module.exports = {
     "./src/components/GlobalHeader2.vue",
     "./src/views/shoppingCart.vue",
     "./src/views/ItemDetail.vue",
+    "./src/views/orderView.vue",
   ],
   theme: {
     extend: {},
