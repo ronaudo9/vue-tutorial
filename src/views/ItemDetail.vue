@@ -46,7 +46,10 @@ export default {
         href: this.products.href,
         price: this.products.price,
         imageSrc: this.products.imageSrc,
-        imageAlt: this.products.Alt,
+        imageAlt: this.products.imageAlt,
+        deleted:false,
+        count:1,
+        subtotal:this.products.subtotal
       }
       axios.post("http://localhost:8001/carts", vm.carts).then((response) => {
         vm.carts = response.data;
