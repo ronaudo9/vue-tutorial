@@ -87,6 +87,7 @@ export default {
           .then((response) => {
             let data = response.data;
             console.log(data);
+            this.$router.push({ path: "/thanks" });
           });
       });
     },
