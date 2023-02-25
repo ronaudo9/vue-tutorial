@@ -5,7 +5,8 @@ import GlobalHeader from "../components/GlobalHeader.vue";
 import ItemDetail from "../views/ItemDetail.vue";
 import signView from "../views/SignView.vue";
 import shoppingCart from "../views/shoppingCart.vue";
-import order from "../views/orderView.vue"
+import order from "../views/orderView.vue";
+import thanks from "../views/thanksView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,6 +54,11 @@ const router = createRouter({
       path: "/order",
       name: "prder",
       component: order,
+    },
+    {
+      path: "/thanks",
+      name: "thanks",
+      component: thanks,
     },
   ],
 });

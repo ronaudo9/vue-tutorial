@@ -12,6 +12,7 @@ module.exports = {
     "./src/views/shoppingCart.vue",
     "./src/views/ItemDetail.vue",
     "./src/views/orderView.vue",
+    "./src/views/thanksView.vue",
   ],
   theme: {
     extend: {},
