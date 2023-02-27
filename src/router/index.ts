@@ -7,6 +7,7 @@ import signView from "../views/SignView.vue";
 import shoppingCart from "../views/shoppingCart.vue";
 import order from "../views/orderView.vue";
 import thanks from "../views/thanksView.vue";
+import user from "../views/UserView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +60,11 @@ const router = createRouter({
       path: "/thanks",
       name: "thanks",
       component: thanks,
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: user,
     },
   ],
 });
