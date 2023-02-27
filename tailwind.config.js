@@ -13,6 +13,7 @@ module.exports = {
     "./src/views/ItemDetail.vue",
     "./src/views/orderView.vue",
     "./src/views/thanksView.vue",
+    "./src/views/UserView.vue",
   ],
   theme: {
     extend: {},
