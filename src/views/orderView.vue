@@ -14,12 +14,14 @@ export default {
     this.product();
     this.customer();
   },
-  beforeRouteLeave() {
+  unmounted() {
     this.transition();
   },
   methods: {
     product: function () {
       const vm = this;
+      // const path = this.$route.path
+      //   console.log(path)
       axios
         .get("http://localhost:8001/purchase" + "?" + "deleted" + "=" + "false")
         .then((response) => {
@@ -47,6 +49,12 @@ export default {
       });
     },
     transition() {
+    //   const path = this.$route.path
+    //   const thank ="/thanks";
+    //     console.log(path)
+    //  if(path == thank){
+    //     console.log("成功")
+    //  }
       let values = this.products.filter((item) => item.deleted === false);
       values.forEach((value) => {
         let id = Number(value.id);
@@ -90,6 +98,9 @@ export default {
             this.$router.push({ path: "/thanks" });
           });
       });
+    },
+    customerEdit(){
+      this.$router.push({ path: "/customerEdit" });
     },
   },
 };
@@ -466,14 +477,14 @@ export default {
                   <p
                     class="text-base dark:text-white font-semibold leading-4 text-center md:text-left text-gray-800"
                   >
-                    Billing Address
+                  &nbsp;<!-- Billing Address -->
                   </p>
                   <p
                     class="w-48 lg:w-full dark:text-gray-300 xl:w-48 text-center md:text-left text-sm leading-5 text-gray-600"
                   >
-                    {{ user.region }}{{ user.city }} <br />{{
-                      user.streetAddress
-                    }}
+                  &nbsp;<br />&nbsp;<!-- {{ user.region }}{{ user.city }} <br />{{ -->
+                      <!-- user.streetAddress -->
+                    <!-- }} -->
                   </p>
                 </div>
               </div>
@@ -481,6 +492,7 @@ export default {
                 class="flex w-full justify-center items-center md:justify-start md:items-start"
               >
                 <button
+                @click.prevent="customerEdit"
                   class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800"
                 >
                   Edit Details

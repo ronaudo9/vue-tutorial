@@ -8,6 +8,8 @@ import shoppingCart from "../views/shoppingCart.vue";
 import order from "../views/orderView.vue";
 import thanks from "../views/thanksView.vue";
 import user from "../views/UserView.vue";
+import userEdit from "../views/userEdit.vue";
+import customerEdit from "../views/customerEdit.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,6 +67,16 @@ const router = createRouter({
       path: "/user",
       name: "user",
       component: user,
+    },
+    {
+      path: "/userEdit",
+      name: "userEdit",
+      component: userEdit,
+    },
+    {
+      path: "/customerEdit",
+      name: " customerEdit",
+      component: customerEdit,
     },
   ],
 });

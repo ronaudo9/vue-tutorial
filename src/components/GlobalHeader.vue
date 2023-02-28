@@ -69,9 +69,13 @@ export default {
           <RouterLink to="/cart" class="mr-5 hover:text-gray-900"
             >cart</RouterLink
           >
-          <RouterLink to="/user" class="mr-5 hover:text-gray-900"
-            >User</RouterLink
+          <RouterLink to="/userEdit" class="mr-5 hover:text-gray-900"
+            >user</RouterLink
           >
+          <RouterLink to="/user" class="mr-5 hover:text-gray-900"
+            >history</RouterLink
+          >
+
           <!-- <a class="mr-5 hover:text-gray-900">Fourth Link</a> -->
         </nav>
         <button
