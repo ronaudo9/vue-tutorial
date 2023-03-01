@@ -13,6 +13,8 @@ export default {
       products: "products",
       //  as unknown as products,
       carts: "carts",
+      favorite: "favorite",
+      buttonState: false,
     };
   },
   // computed: {
@@ -21,7 +23,8 @@ export default {
   //   },
   // },
   created() {
-    this.Products();
+    this.Products(),
+    this.favorites()
   },
   methods: {
     Products: function () {
@@ -32,8 +35,6 @@ export default {
           const { cookies } = useCookies();
           let cookie = cookies.get("id");
           vm.userId = Number(cookie);
-          console.log(vm.id);
-          console.log(vm.products);
         });
       }
     },
@@ -47,15 +48,94 @@ export default {
         price: this.products.price,
         imageSrc: this.products.imageSrc,
         imageAlt: this.products.imageAlt,
-        deleted:false,
-        count:1,
-        subtotal:this.products.subtotal
-      }
+        deleted: false,
+        count: 1,
+        subtotal: this.products.subtotal,
+      };
       axios.post("http://localhost:8001/carts", vm.carts).then((response) => {
         vm.carts = response.data;
-        console.log(vm.carts);
         this.$router.push({ path: "/cart" });
       });
+    },
+    favorites(){
+      let vm = this;
+      const { cookies } = useCookies();
+        let cookie = cookies.get("id");
+        let userId = Number(cookie);
+        console.log(userId)
+        axios.get("http://localhost:8001/favorite" + "?" + "itemId" + "=" +vm.id + "&" + "userId"+"="+userId).then((response) => {
+          let u = response.data;
+          if (u.length == 0) {
+            return false;
+          }else{
+            vm.favorite = u
+            console.log(vm.favorite)
+          }
+        });
+    },
+    changeState() {
+      this.buttonState = !this.buttonState;
+      const vm = this;
+      //   if(!this.buttonState){
+      //   vm.favorite = {
+      //     userId: this.userId,
+      //     itemId: this.products.id,
+      //     name: this.products.name,
+      //     href: this.products.href,
+      //     price: this.products.price,
+      //     imageSrc: this.products.imageSrc,
+      //     imageAlt: this.products.imageAlt,
+      //     deleted: false,
+      //     count: 1,
+      //     subtotal: this.products.subtotal,
+      //   };
+      //   axios.post("http://localhost:8001/favorite", vm.carts).then((response) => {
+      //     vm.favorite = response.data;
+      //     console.log(vm.favorite);
+      //   });
+      // }
+      if (this.favorite.length == 1) {
+        let vm = this;
+        let id2 =Number(this.userId) + "."+Number(this.products.id);
+        console.log(id2)
+        let id = Number(id2);
+        console.log(id)
+        const { cookies } = useCookies();
+        let cookie = cookies.get("id");
+        let userId = Number(cookie);
+        axios
+          .delete(
+            "http://localhost:8001/favorite/" +id)
+          .then((response) => {
+            console.log(response.data);
+            location.reload();
+          });
+      } else {
+        let vm = this;
+        let id2 =Number(this.userId) + "."+Number(this.products.id);
+        console.log(id2)
+        let id = Number(id2);
+        console.log(id)
+        vm.carts = {
+          userId: this.userId,
+          itemId: this.products.id,
+          name: this.products.name,
+          href: this.products.href,
+          price: this.products.price,
+          imageSrc: this.products.imageSrc,
+          imageAlt: this.products.imageAlt,
+          deleted: false,
+          count: 1,
+          subtotal: this.products.subtotal,
+          id:id,
+        };
+        axios
+          .post("http://localhost:8001/favorite", vm.carts)
+          .then((response) => {
+            console.log(response.data);
+            location.reload();
+          });
+      }
     },
   },
 
@@ -258,23 +338,42 @@ export default {
               @click.prevent="cart"
               class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
             >
-            to cart
+              to cart
             </button>
             <button
+              @click.prevent="changeState"
               class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
             >
-              <svg
-                fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
-                ></path>
-              </svg>
+              <div v-if="this.favorite.length == 1">
+                <svg
+                  fill="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+                  ></path>
+                </svg>
+              </div>
+              <div v-else>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="{1.5}"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                  />
+                </svg>
+              </div>
             </button>
           </div>
         </div>
