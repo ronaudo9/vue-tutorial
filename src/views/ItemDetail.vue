@@ -14,7 +14,7 @@ export default {
       //  as unknown as products,
       carts: "carts",
       favorite: "favorite",
-      buttonState: false,
+      // buttonState: false,
     };
   },
   // computed: {
@@ -74,7 +74,7 @@ export default {
         });
     },
     changeState() {
-      this.buttonState = !this.buttonState;
+      // this.buttonState = !this.buttonState;
       const vm = this;
       //   if(!this.buttonState){
       //   vm.favorite = {

@@ -16,6 +16,7 @@ module.exports = {
     "./src/views/UserView.vue",
     "./src/views/userEdit.vue",
     "./src/views/customerEdit.vue",
+    "./src/views/favoriteView.vue",
   ],
   theme: {
     extend: {},

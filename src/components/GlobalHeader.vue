@@ -72,6 +72,9 @@ export default {
           <RouterLink to="/userEdit" class="mr-5 hover:text-gray-900"
             >user</RouterLink
           >
+          <RouterLink to="/favorite" class="mr-5 hover:text-gray-900"
+            >favorite</RouterLink
+          >
           <RouterLink to="/user" class="mr-5 hover:text-gray-900"
             >history</RouterLink
           >

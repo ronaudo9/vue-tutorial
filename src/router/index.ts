@@ -9,7 +9,8 @@ import order from "../views/orderView.vue";
 import thanks from "../views/thanksView.vue";
 import user from "../views/UserView.vue";
 import userEdit from "../views/userEdit.vue";
-import customerEdit from "../views/customerEdit.vue"
+import customerEdit from "../views/customerEdit.vue";
+import favoriteView from "../views/favoriteView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -77,6 +78,11 @@ const router = createRouter({
       path: "/customerEdit",
       name: " customerEdit",
       component: customerEdit,
+    },
+    {
+      path: "/favorite",
+      name: "favorite",
+      component: favoriteView,
     },
   ],
 });
