@@ -23,6 +23,7 @@ export default {
         .get("http://localhost:8001/carts" + "?" + "userId" + "=" + id + "&" + "deleted" + "=" + "false")
         .then((response) => {
           vm.products = response.data;
+
           const priceArray = [];
           vm.products.forEach((element) => {
             priceArray.push(element.subtotal);
