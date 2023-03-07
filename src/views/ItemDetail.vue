@@ -23,8 +23,7 @@ export default {
   //   },
   // },
   created() {
-    this.Products(),
-    this.favorites()
+    this.Products(), this.favorites();
   },
   methods: {
     Products: function () {
@@ -40,36 +39,53 @@ export default {
     },
     cart: function () {
       const vm = this;
-      vm.carts = {
-        userId: this.userId,
-        itemId: this.products.id,
-        name: this.products.name,
-        href: this.products.href,
-        price: this.products.price,
-        imageSrc: this.products.imageSrc,
-        imageAlt: this.products.imageAlt,
-        deleted: false,
-        count: 1,
-        subtotal: this.products.subtotal,
-      };
-      axios.post("http://localhost:8001/carts", vm.carts).then((response) => {
-        vm.carts = response.data;
-        this.$router.push({ path: "/cart" });
-      });
+      if (document.cookie == "") {
+        alert("Please sign in");
+        this.$router.push({ path: "/signin" });
+      } else {
+        vm.carts = {
+          userId: this.userId,
+          itemId: this.products.id,
+          name: this.products.name,
+          href: this.products.href,
+          price: this.products.price,
+          imageSrc: this.products.imageSrc,
+          imageAlt: this.products.imageAlt,
+          deleted: false,
+          count: 1,
+          subtotal: this.products.subtotal,
+        };
+        axios.post("http://localhost:8001/carts", vm.carts).then((response) => {
+          vm.carts = response.data;
+          this.$router.push({ path: "/cart" });
+        });
+      }
     },
-    favorites(){
+    favorites() {
       let vm = this;
       const { cookies } = useCookies();
-        let cookie = cookies.get("id");
-        let userId = Number(cookie);
-        console.log(userId)
-        axios.get("http://localhost:8001/favorite" + "?" + "itemId" + "=" +vm.id + "&" + "userId"+"="+userId).then((response) => {
+      let cookie = cookies.get("id");
+      let userId = Number(cookie);
+      console.log(userId);
+      axios
+        .get(
+          "http://localhost:8001/favorite" +
+            "?" +
+            "itemId" +
+            "=" +
+            vm.id +
+            "&" +
+            "userId" +
+            "=" +
+            userId
+        )
+        .then((response) => {
           let u = response.data;
           if (u.length == 0) {
             return false;
-          }else{
-            vm.favorite = u
-            console.log(vm.favorite)
+          } else {
+            vm.favorite = u;
+            console.log(vm.favorite);
           }
         });
     },
@@ -96,26 +112,25 @@ export default {
       // }
       if (this.favorite.length == 1) {
         let vm = this;
-        let id2 =Number(this.userId) + "."+Number(this.products.id);
-        console.log(id2)
+        let id2 = Number(this.userId) + "." + Number(this.products.id);
+        console.log(id2);
         let id = Number(id2);
-        console.log(id)
+        console.log(id);
         const { cookies } = useCookies();
         let cookie = cookies.get("id");
         let userId = Number(cookie);
         axios
-          .delete(
-            "http://localhost:8001/favorite/" +id)
+          .delete("http://localhost:8001/favorite/" + id)
           .then((response) => {
             console.log(response.data);
             location.reload();
           });
       } else {
         let vm = this;
-        let id2 =Number(this.userId) + "."+Number(this.products.id);
-        console.log(id2)
+        let id2 = Number(this.userId) + "." + Number(this.products.id);
+        console.log(id2);
         let id = Number(id2);
-        console.log(id)
+        console.log(id);
         vm.carts = {
           userId: this.userId,
           itemId: this.products.id,
@@ -127,7 +142,7 @@ export default {
           deleted: false,
           count: 1,
           subtotal: this.products.subtotal,
-          id:id,
+          id: id,
         };
         axios
           .post("http://localhost:8001/favorite", vm.carts)

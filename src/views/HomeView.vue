@@ -2,29 +2,24 @@
 import axios from "axios";
 import { RouterLink } from "vue-router";
 import ItemDetail from "../views/ItemDetail.vue";
+import {mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
       products: "products",
     };
   },
-  // components: {
-  //   ItemDetailView,
-  // },
-  // computed: {
-  //   articles() {
-  //     return this.$store.state.products; // storeから記事データを取得
-  //   },
-  // },
-  mounted() {
+  created(){
     this.product();
-  },
+    },
   methods: {
     product: function () {
-      const vm = this;
-      axios.get("http://localhost:8001/items").then((response) => {
-        vm.products = response.data;
-      });
+      this.$store.dispatch("getMessageAction");
+      // console.log(this.$store.dispatch("getMessageAction"))
+      // const vm = this;
+      // axios.get("http://localhost:8001/items").then((response) => {
+      //   vm.products = response.data;
+      // });
     },
   },
 };
@@ -41,7 +36,7 @@ export default {
         class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
       >
         <a
-          v-for="product in products"
+          v-for="product in this.$store.state.message"
           :key="product.id"
           :href="'/' + product.id"
           class="group"
@@ -52,7 +47,6 @@ export default {
               params: { id: product.id },
             }"
           />
-
 
           <div
             class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8"
